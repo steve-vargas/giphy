@@ -1,39 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Giphy</title>
-</head>
-<div id = "buttons-div">
-    <button data-animal="chicken">
-        ....
-      </button> 
-      <button data-animal="dog">
-        woof
-      </button>
-      <button data-animal="cow">
-        moooo
-      </button>
-</div>
-<body>
-    <div id = "animal-gifs">
 
-    </div>
 
-    <form id="animal-form">
-        <label for="animal-input">Input animal name</label>
-        <input id="animalName" type="Animal-input">
-        <button id="addAnimal" type="submit">Submit</button>
-    </form>
-
-    <div id="animals">
-
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    
 //add a button with text from the animal added
 var animalArray = [];
 
@@ -42,8 +8,8 @@ var animalArray = [];
 //once button is triggered, add into an empty array and get 10 images from giphy API
 $("button").on("click", function() { 
 var newAnimal = $("#animalName").val();
-var newAnimalButton = $("<button>").attr(newAnimal);
-$("#buttons-div").prepend(newAnimalButton);
+var newAnimalButton = $("<button>").attr(data-animal);
+
 console.log(newAnimal);
 animalArray.push(newAnimal);
 console.log(animalArray);
@@ -77,11 +43,10 @@ $.ajax({
     $("#animal-gifs").prepend(animalGif);
    }
 
+}).fail( function(err) {
+    throw err;
 });
 
 
 
 });
-    </script>
-</body>
-</html>
